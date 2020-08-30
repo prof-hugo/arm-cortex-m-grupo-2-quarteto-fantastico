@@ -75,7 +75,7 @@
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_QT0xXOi3EeqY3-40JdMnWg" name="Ativo + Pendente" incomingTransitions="_juBOQOi5EeqY3-40JdMnWg">
             <outgoingTransitions xmi:id="_nJjhAOi5EeqY3-40JdMnWg" specification="[curr_active ==2]" target="_P57qrOi3EeqY3-40JdMnWg"/>
-            <outgoingTransitions xmi:id="_Wc6hIOlUEeq3mezEJjMbsw" specification="[!nvic.PEND2]" target="_PLAIHei3EeqY3-40JdMnWg"/>
+            <outgoingTransitions xmi:id="_Wc6hIOlUEeq3mezEJjMbsw" specification="[!nvic.PEND1]" target="_PLAIHei3EeqY3-40JdMnWg"/>
           </vertices>
         </regions>
       </vertices>

@@ -14,7 +14,7 @@
             <outgoingTransitions xmi:id="_1vKnoObZEeq04t9TcbdByQ" specification="[nvic.PEND1]" target="_cBPtY-bYEeq04t9TcbdByQ"/>
             <outgoingTransitions xmi:id="_y7NDkOiMEeqJpbKOZUBqKA" specification="[(nvic.PEND2) &amp;&amp; (!nvic.PEND1)]" target="_cBPtZubYEeq04t9TcbdByQ"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_cBPtY-bYEeq04t9TcbdByQ" specification="entry / curr_active = 1&#xD;&#xA;" name="Active I1" incomingTransitions="_1vKnoObZEeq04t9TcbdByQ _wf6QYOiNEeqJpbKOZUBqKA">
+          <vertices xsi:type="sgraph:State" xmi:id="_cBPtY-bYEeq04t9TcbdByQ" specification="curry / curr_active = 1&#xD;&#xA;" name="Active I1" incomingTransitions="_1vKnoObZEeq04t9TcbdByQ _wf6QYOiNEeqJpbKOZUBqKA">
             <outgoingTransitions xmi:id="_Xlk5wOiNEeqJpbKOZUBqKA" specification="[(nvic.PEND2) &amp;&amp; (!nvic.PEND1)]" target="_QQnT0OiMEeqJpbKOZUBqKA"/>
             <outgoingTransitions xmi:id="_42yJ0OiPEeqJpbKOZUBqKA" specification="[((nvic.PEND1 || nvic.PEND2) == false)]" target="_yrAkEOiPEeqJpbKOZUBqKA"/>
           </vertices>

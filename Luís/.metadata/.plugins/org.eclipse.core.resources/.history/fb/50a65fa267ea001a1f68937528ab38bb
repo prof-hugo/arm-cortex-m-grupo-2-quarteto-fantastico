@@ -75,7 +75,7 @@
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_QT0xXOi3EeqY3-40JdMnWg" name="Ativo + Pendente" incomingTransitions="_juBOQOi5EeqY3-40JdMnWg">
             <outgoingTransitions xmi:id="_nJjhAOi5EeqY3-40JdMnWg" specification="[curr_active ==2]" target="_P57qrOi3EeqY3-40JdMnWg"/>
-            <outgoingTransitions xmi:id="_Wc6hIOlUEeq3mezEJjMbsw" specification="[!nvic.PEND2]" target="_PLAIHei3EeqY3-40JdMnWg"/>
+            <outgoingTransitions xmi:id="_Wc6hIOlUEeq3mezEJjMbsw" specification="[!nvic.PEND1]" target="_PLAIHei3EeqY3-40JdMnWg"/>
           </vertices>
         </regions>
       </vertices>
@@ -724,7 +724,7 @@
     <edges xmi:id="_jc_rQOlfEeq3mezEJjMbsw" type="Transition" element="_jc_EMOlfEeq3mezEJjMbsw" source="_GAlcKulVEeq3mezEJjMbsw" target="_jC2s8OlfEeq3mezEJjMbsw">
       <children xsi:type="notation:DecorationNode" xmi:id="_jc_rROlfEeq3mezEJjMbsw" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_jc_rRelfEeq3mezEJjMbsw"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_jc_rRulfEeq3mezEJjMbsw" x="9" y="155"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_jc_rRulfEeq3mezEJjMbsw" x="-226" y="55"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_jc_rQelfEeq3mezEJjMbsw" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_jc_rQ-lfEeq3mezEJjMbsw" fontName="Verdana"/>

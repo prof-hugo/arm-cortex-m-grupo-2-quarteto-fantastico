@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_HvMJcObYEeq04t9TcbdByQ" specification="&#xA;// Use the event driven execution model.&#xA;// Runs a run-to-completion step&#xA;// each time an event is raised.&#xA;// Switch to cycle based behavior&#xA;@CycleBased(500)&#xA;// instead.&#xA;&#xA;@ChildFirstExecution&#xA;// In composite states, execute&#xA;// child states first.&#xA;// @ParentFirstExecution does the opposite.&#xA;&#xA;interface:&#xA;// Define events&#xA;// and variables here. &#xA;// Use CTRL + Space for content assist.&#xA;&#xA;internal:&#xA;event IRQ1&#xA;event IRQ2&#xA;event return_interrupt&#xA;var curr_active : integer = 0&#xA;var most_priority : integer = 0&#xA;&#xA;&#xA;interface nvic:&#xA;var EN : boolean = false&#xA;var EN1 : boolean = false&#xA;var EN2 : boolean = false&#xA;var PEND: boolean = false&#xA;var PEND1: boolean = false&#xA;var PEND2: boolean = false" name="NVIC_dual">
+  <sgraph:Statechart xmi:id="_HvMJcObYEeq04t9TcbdByQ" specification="&#xA;// Use the event driven execution model.&#xA;// Runs a run-to-completion step&#xA;// each time an event is raised.&#xA;// Switch to cycle based behavior&#xA;@CycleBased(500)&#xA;// instead.&#xA;&#xA;@ChildFirstExecution&#xA;// In composite states, execute&#xA;// child states first.&#xA;// @ParentFirstExecution does the opposite.&#xA;&#xA;interface:&#xA;// Define events&#xA;// and variables here. &#xA;// Use CTRL + Space for content assist.&#xA;&#xA;internal:&#xA;event IRQ1&#xA;event IRQ2&#xA;event return_interrupt&#xA;var curr_active : integer = 0&#xA;var most_priority : integer = 0&#xA;var quit : boolean = false&#xA;&#xA;&#xA;interface nvic:&#xA;var EN : boolean = false&#xA;var EN1 : boolean = false&#xA;var EN2 : boolean = false&#xA;var PEND: boolean = false&#xA;var PEND1: boolean = false&#xA;var PEND2: boolean = false" name="NVIC_dual">
     <regions xmi:id="_HvUFQ-bYEeq04t9TcbdByQ" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_Hvd2Q-bYEeq04t9TcbdByQ">
         <outgoingTransitions xmi:id="_1RyOsOizEeqY3-40JdMnWg" target="_LQd30ObYEeq04t9TcbdByQ"/>
@@ -25,8 +25,8 @@
           <vertices xsi:type="sgraph:State" xmi:id="_b4u4nuivEeqY3-40JdMnWg" name="Pendente" incomingTransitions="_b45QouivEeqY3-40JdMnWg">
             <outgoingTransitions xmi:id="_b40_N-ivEeqY3-40JdMnWg" specification="[nvic.EN]&#xA;" target="_b42NZeivEeqY3-40JdMnWg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_b4tDbOivEeqY3-40JdMnWg" specification="entry/ curr_active = most_priority" name="Handle Mode" incomingTransitions="_b420aOivEeqY3-40JdMnWg _b4zxFeivEeqY3-40JdMnWg">
-            <outgoingTransitions xmi:id="_jc_EMOlfEeq3mezEJjMbsw" specification="[return_interrupt || curr_active != most_priority] " target="_jC0QsOlfEeq3mezEJjMbsw"/>
+          <vertices xsi:type="sgraph:State" xmi:id="_b4tDbOivEeqY3-40JdMnWg" specification="entry/ curr_active = most_priority&#xA;return_interrupt / quit =true" name="Handle Mode" incomingTransitions="_b420aOivEeqY3-40JdMnWg _b4zxFeivEeqY3-40JdMnWg">
+            <outgoingTransitions xmi:id="_jc_EMOlfEeq3mezEJjMbsw" specification="[quit || curr_active != most_priority] / quit =false" target="_jC0QsOlfEeq3mezEJjMbsw"/>
           </vertices>
           <vertices xsi:type="sgraph:Choice" xmi:id="_7j-BaulWEeq3mezEJjMbsw" incomingTransitions="_pmIMsOlfEeq3mezEJjMbsw">
             <outgoingTransitions xmi:id="_7kAdoOlWEeq3mezEJjMbsw" specification="[nvic.PEND &amp;&amp; nvic.EN]" target="_b4zKCeivEeqY3-40JdMnWg"/>
@@ -75,7 +75,7 @@
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="_QT0xXOi3EeqY3-40JdMnWg" name="Ativo + Pendente" incomingTransitions="_juBOQOi5EeqY3-40JdMnWg">
             <outgoingTransitions xmi:id="_nJjhAOi5EeqY3-40JdMnWg" specification="[curr_active ==2]" target="_P57qrOi3EeqY3-40JdMnWg"/>
-            <outgoingTransitions xmi:id="_Wc6hIOlUEeq3mezEJjMbsw" specification="[!nvic.PEND2]" target="_PLAIHei3EeqY3-40JdMnWg"/>
+            <outgoingTransitions xmi:id="_Wc6hIOlUEeq3mezEJjMbsw" specification="[!nvic.PEND1]" target="_PLAIHei3EeqY3-40JdMnWg"/>
           </vertices>
         </regions>
       </vertices>
@@ -434,7 +434,7 @@
           <styles xsi:type="notation:ShapeStyle" xmi:id="_LQgUEebYEeq04t9TcbdByQ" fontName="Verdana" fillColor="15981773" lineColor="12632256"/>
           <styles xsi:type="notation:FontStyle" xmi:id="_LQgUEubYEeq04t9TcbdByQ"/>
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_LQhiMObYEeq04t9TcbdByQ" name="isHorizontal"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_LQgUE-bYEeq04t9TcbdByQ" x="-257" y="-16" width="1238" height="968"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_LQgUE-bYEeq04t9TcbdByQ" width="1238" height="968"/>
         </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Hvd2QebYEeq04t9TcbdByQ"/>
       </children>
@@ -724,7 +724,7 @@
     <edges xmi:id="_jc_rQOlfEeq3mezEJjMbsw" type="Transition" element="_jc_EMOlfEeq3mezEJjMbsw" source="_GAlcKulVEeq3mezEJjMbsw" target="_jC2s8OlfEeq3mezEJjMbsw">
       <children xsi:type="notation:DecorationNode" xmi:id="_jc_rROlfEeq3mezEJjMbsw" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_jc_rRelfEeq3mezEJjMbsw"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_jc_rRulfEeq3mezEJjMbsw" x="9" y="155"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_jc_rRulfEeq3mezEJjMbsw" x="10" y="166"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_jc_rQelfEeq3mezEJjMbsw" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_jc_rQ-lfEeq3mezEJjMbsw" fontName="Verdana"/>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.yakindu.sct.simulation.core.launch.statechart">
+<stringAttribute key="filename" value="/Arm_interrupt/NVIC_POP_PUSH3.sct"/>
+</launchConfiguration>
